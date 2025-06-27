@@ -1,0 +1,5 @@
+.ruff_cache/
+.vscode/
+.env
+dataset
+file_env
