@@ -1,0 +1,2 @@
+# Eclude des fichers et dossiers
+exclude= ["notebooks/eda.ipynb"]
