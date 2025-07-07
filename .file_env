@@ -1,6 +1,0 @@
-# Jeu de données
-DATASET_PATH = ./data/CarSell_data.csv
-
-# MLflow
-MLFLOW_TRACKING_URI = http://localhost:5000
-MLFLOW_EXPERIMENT = UsedCarPrice

@@ -1,5 +1,12 @@
+# Folder
+__pycache__/
 .ruff_cache/
 .vscode/
-.env
-dataset
-file_env
+dataset/
+mlruns/
+mlartifacts/
+
+# Files
+*.env
+*.ruff.toml
+*automl.log

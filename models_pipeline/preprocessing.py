@@ -15,8 +15,12 @@ def get_preprocessing(usedcar):
         features = usedcar.drop(columns=['Price'])
         
         # Separating numericals and categoricals features
-        num_cols = features.select_dtype(include=["int","float"]).columns.tolist()
+        num_cols = features.select_dtypes(include=["int32","int64","float64"]).columns.tolist()
         cat_cols = features.select_dtypes(include=["object"]).columns.tolist()
+        
+        # Print the features names
+        logger.info(f"📊📊Numericals features : {num_cols}")
+        logger.info(f"📊📊 Categoricals features : {cat_cols}")
         
         # Preprocessing
         num_transformers = Pipeline([
