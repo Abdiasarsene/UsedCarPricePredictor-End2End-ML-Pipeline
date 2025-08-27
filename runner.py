@@ -7,7 +7,7 @@ from trainer.config import settings
 from trainer.loaders.data_loader import load_and_encode
 from trainer.preprocessing.preprocessing import get_preprocessing
 from trainer.models.training import train_models
-from trainer.evauation.predEvalSave import predict_evaluate_save
+from trainer.evaluation.predEvalSave import predict_evaluate_save
 from trainer.monitor.monitor import (
     log_data_info,
     log_preprocess_info,

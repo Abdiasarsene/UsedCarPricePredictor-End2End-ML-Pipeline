@@ -32,7 +32,6 @@ def log_preprocess_info(num_cols, cat_cols):
 # ====== TRAINING ======
 def log_train_info(model_name, durations_seconds):
     try:
-        mlflow.log_param("models", model_name)
         mlflow.log_metric(f"{model_name}_time_duration", durations_seconds)
         logger.info("✅ Train log done")
     except Exception as e:
