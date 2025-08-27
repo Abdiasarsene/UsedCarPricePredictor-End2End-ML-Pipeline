@@ -1,0 +1,47 @@
+# Importing libraies required
+import logging
+import traceback
+from sklearn.preprocessing import RobustScaler
+from sklearn.pipeline import Pipeline
+from category_encoders import CatBoostEncoder
+from sklearn.impute import KNNImputer,SimpleImputer
+from sklearn.compose import ColumnTransformer
+
+# ====== LOGGING ======
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# ====== GET PREPROCESSING ======
+def get_preprocessing(usedcar):
+    try:
+        features = usedcar.drop(columns=['Price'])
+        
+        # Separating numericals and categoricals features
+        num_cols = features.select_dtypes(include=["int32","int64","float64"]).columns.tolist()
+        cat_cols = features.select_dtypes(include=["object"]).columns.tolist()
+        
+        # Print the features names
+        logger.info(f"📊 Numericals features : {num_cols}")
+        logger.info(f"📊 Categoricals features : {cat_cols}")
+        
+        # Preprocessing
+        num_transformers = Pipeline([
+            ('impute', KNNImputer(n_neighbors=3)),
+            ("scaler", RobustScaler())
+        ])
+        
+        cat_transformers = Pipeline([
+            ('impute', SimpleImputer(strategy='most_frequent')),
+            ('encode', CatBoostEncoder())
+        ])
+        
+        preprocessor = ColumnTransformer([
+            ('num', num_transformers,num_cols),
+            ('cat', cat_transformers, cat_cols)
+        ])
+        logger.info('✅ Preprocessing successfully did')
+        return preprocessor
+    except Exception as e:
+        logger.error(f"❌ Error Detected : {str(e)}")
+        logger.debug(f"⚠️ Traceback complete : {traceback.format_exc()}")
+        raise e

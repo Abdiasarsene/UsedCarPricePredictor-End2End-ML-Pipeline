@@ -1,5 +1,6 @@
 # Importing libraries required
 import logging
+import traceback
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
@@ -60,10 +61,12 @@ def train_models(x_train, y_train, preprocessor):
                 trained_models[name] = pipeline
                 logger.info(f"Model {name} trained successfully.")
             except Exception as e:
-                logger.error(f"Error training model {name}: {e}")
+                logger.error(f"❌ Error Detected :{name}: {e}")
+                logger.debug(f"⚠️ Traceback complete : {traceback.format_exc()}")
 
         logger.info("All models trained successfully.🚀🚀")
         return trained_models
     except Exception as e:
-        logger.error(f"Error in train_models function: {e}")
+        logger.error(f"❌ Error Detected : {str(e)}")
+        logger.debug(f"⚠️ Traceback complete : {traceback.format_exc()}")
         raise e

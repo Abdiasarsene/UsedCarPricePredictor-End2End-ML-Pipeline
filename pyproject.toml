@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "UsedCarPricePredictor"
+version = "0.1.0"
+description = " Used Car Price Predictor created with FastAPI"
+authors = ["Abdias Arsène <abdiasarsene@gmaail.com>"]
+readme = "README.md"
+packages = [{ include = "UsedCarPricePredictor"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "*"
+scikit-learn = "*"
+mlflow = "*"
+bentoml= "*"
+fastapi="*"
+mlflow_skinny="*"
+prometheus_client="*"
+prometheus_fastapi_instrumentator="*"
+pydantic="*"
+python-dotenv="*"
+scikit_learn="*"
+starlette="*"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.1"
+pre-commit = "^3.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -5,8 +5,12 @@ __pycache__/
 dataset/
 mlruns/
 mlartifacts/
+.mypy_cache/
+other/
 
 # Files
 *.env
 *.ruff.toml
 *automl.log
+*.env.local
+*.env.docker

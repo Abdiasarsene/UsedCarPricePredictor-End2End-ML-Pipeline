@@ -1,0 +1,24 @@
+# Folders
+.dvc/
+.mypy_cache/
+.ruff_cache/
+.vscode/
+dataset/
+others/
+statics/
+test/
+trainer/
+
+# Files
+.dvcignore
+.env.local
+.gitignore
+.pre-commit-config.yaml
+.ruff.toml
+automl.log
+Jenkinsfile
+Makefile
+mypy.ini
+README.md
+runner.py
+Taskfile.yaml
