@@ -74,7 +74,7 @@ def log_backup_info(evaluation_result):
                 logger.info(f"🚀 {model_name} promoted to Production")
 
             # BentoML Backup
-            bentoml.sklearn.log_model(model, model_name)
+            bentoml.sklearn.load_model(model, model_name)
             logger.info("📊 Model logged in BentoML")
 
     except Exception as e:

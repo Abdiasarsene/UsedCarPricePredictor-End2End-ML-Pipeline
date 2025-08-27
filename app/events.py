@@ -32,7 +32,7 @@ def register_startup_event(app: FastAPI):
                 timeout=10.0
             )
             model_type = "MLflow"
-            logger.info(f"✅ MLflow model loaded: {type(model).__name__}")
+            logger.info("✅ MLflow model loaded")
 
         except Exception as mlflow_error:
             logger.error(f"❌ MLflow load failed: {mlflow_error}")

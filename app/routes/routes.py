@@ -3,6 +3,7 @@ from fastapi import APIRouter, HTTPException
 from ..schemas.schema import CarPriceData
 from ..services.predictor import make_prediction
 from ..events import get_model
+from fastapi import Request
 from ..monitor import increment_inference_count
 import logging
 import traceback
@@ -54,3 +55,13 @@ async def predict_car(data: CarPriceData):
     except Exception as e:
         logger.error(f"❌ Error Detected : {str(e)}")
         logger.debug(f"🟢 Traceback :{traceback.format_exc()}")
+
+# ====== DEBUG ======
+@router.post("/debug")
+async def debug_request(request: Request):
+    headers = dict(request.headers)
+    try:
+        body = await request.json()
+    except Exception as e:
+        body = f"Invalid JSON: {e}"
+    return {"headers": headers, "body": body}

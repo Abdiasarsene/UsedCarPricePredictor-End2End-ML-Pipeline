@@ -50,7 +50,7 @@ def main():
                 log_train_info(model_name, duration)
 
             # Prédiction, évaluation et sauvegarde
-            evaluation_results = predict_evaluate_save(trained_models, x_test, y_test)
+            evaluation_results = predict_evaluate_save(x_test, y_test, trained_models)
             log_backup_info(evaluation_results)
 
     except Exception as e:

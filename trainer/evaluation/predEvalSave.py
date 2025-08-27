@@ -41,7 +41,9 @@ def predict_evaluate_save(x_test, y_test, trained_models):
                 }
             }
             logger.info("✅ Predict + Evaluate + Save")
-            return result
+            
+        return result
+    
     except Exception as e:
         logger.error(f"❌ Error Detected : {str(e)}")
         logger.debug(f"⚠️ Traceback complete : {traceback.format_exc()}")

@@ -1,9 +1,10 @@
-# Moduuuuuuuleeees 
+# app/schemas/schema.py 
+from app.config import settings
 from pydantic import BaseModel, Field, root_validator
 import json
 
 # Load categories
-with open("../utils/categories_modals.json", "r") as f:
+with open(settings.cat_cols_name, "r") as f:
     categories = json.load(f)
 
 class CarPriceData(BaseModel):

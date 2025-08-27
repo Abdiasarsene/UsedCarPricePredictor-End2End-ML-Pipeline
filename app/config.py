@@ -30,12 +30,14 @@ class Settings():
         self.api_version = os.getenv("API_VERSION", "")
         self.model_name = os.getenv("MODEL_NAME", "")
         self.bentoml_model = os.getenv("BENTOML_MODEL", "")
-        self.xgboost_mlflow = os.getenv("XGBOOST_MLFLOW", "")
+        self.xgboost_mlflow = os.getenv("LINEAREG_MLFLOW", "")
         self.protocol = os.getenv("PROTOCOL", "")
         self.token = os.getenv("TOKEN", "")
         self.local_test = os.getenv("LOCAL_TEST", "")
         self.domain_name = os.getenv("DOMAIN_NAME", "")
         self.token_two = os.getenv("SECRET_TOKENS", "")
+        self.cat_cols_name = os.getenv("CAT_COLS_NAME", "")
+        
         # Logging for debug
         print(f"🔎 ENV_MODE : {self.env_mode}")
         print(f"🚀 API : {self.api_title} v{self.api_version}")
