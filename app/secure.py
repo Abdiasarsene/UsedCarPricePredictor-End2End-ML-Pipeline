@@ -5,7 +5,6 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from .config import settings
 import logging
-import traceback
 
 oauth2_schema = OAuth2PasswordBearer(tokenUrl=settings.token)
 
@@ -31,7 +30,7 @@ def apply_security_middleware(app:FastAPI):
         logger.info("✅ Middleware Applied")
     except Exception as e:
         logger.error(f"❌ Error Detected : {str(e)}")
-        logger.debug(f"🟢 Traceback : {traceback.format_exc()}")
+        logger.exception("Stack trace : ")
 
 # ====== TOKEN CHECKER ======
 def verify_token(token: str = Depends(oauth2_schema)):
@@ -46,4 +45,4 @@ def verify_token(token: str = Depends(oauth2_schema)):
             return {"user" : "authenticated"}
     except Exception as e:
         logger.error(f"❌ Error Detected : {str(e)}")
-        logger.debug(f"🟢 Tracback : {traceback.format_exc()}")
+        logger.exception("Stack trace :")

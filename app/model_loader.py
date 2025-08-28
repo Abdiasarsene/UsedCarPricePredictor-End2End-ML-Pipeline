@@ -1,6 +1,5 @@
 # Modules required
 import logging
-import traceback
 import mlflow
 import bentoml
 from app.config import settings
@@ -21,9 +20,10 @@ def load_mlflow_model(path):
         if model is None:
             raise RuntimeError("⚠️ Mlflow failed")
         logger.info("✅ Mlflow loaded")
+        return model
     except Exception as e:
         logger.error(f"❌ Error Detected : {str(e)}")
-        logger.debug(f"⚠️ Traceback : {traceback.format_exc()}")
+        logger.exception("Stack trace : ")
 
 # ====== FUNCTION OF BENTOML ======
 def load_bentoml_model(tag):
@@ -32,6 +32,7 @@ def load_bentoml_model(tag):
         if model is None:
             raise RuntimeError("⚠️ BentoML failed")
         logger.info("🔃 BentoML loaded")
+        return model
     except Exception as e:
         logger.error(f"❌ Error Detected : {str(e)}")
-        logger.debug(f"⚠️ Traceback : {traceback.format_exc()}")
+        logger.exception("Stack trace :")

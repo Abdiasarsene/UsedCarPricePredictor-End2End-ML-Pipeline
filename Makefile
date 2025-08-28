@@ -52,7 +52,7 @@ code:
 # Launch API
 api:
 	@echo "Launch API"
-	@uvicorn main:app --host 127.0.0.1 --port 8000 --reload
+	@uvicorn main:app --host 127.0.0.1 --port 8000 --workers 1
 
 # Test validation 
 schema:

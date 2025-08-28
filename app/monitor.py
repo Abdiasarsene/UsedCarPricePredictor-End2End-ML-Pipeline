@@ -4,7 +4,6 @@ from prometheus_fastapi_instrumentator import Instrumentator
 from prometheus_client import Counter, Histogram
 import time 
 import logging 
-import traceback
 
 # ====== LOGGING ======
 logging.basicConfig(level=logging.INFO)
@@ -43,7 +42,7 @@ def add_monitoring(app:FastAPI):
         logger.info("✅ Prometheus monitoring activated on /metrics")
     except Exception as e:
         logger.error(f"❌ Error Detected : {str(e)}")
-        logger.debug(f"🟢 Complete traceback : {traceback.format_exc()}")
+        logger.exception("Stack trace :")
 
 # ====== MANUAL METRICS OF MIDDLEWARE ======
 async def metrics_middleware(request: Request, call_next):
@@ -66,4 +65,4 @@ def increment_inference_count():
         logger.debug("🔃 Incrementation of model_inference_count")
     except Exception as e:
         logger.error(f"❌ Error Detected : {str(e)}")
-        logger.debug(f"🟢 Complete traceback : {traceback.format_exc()}")
+        logger.exception("Stack trace : ")

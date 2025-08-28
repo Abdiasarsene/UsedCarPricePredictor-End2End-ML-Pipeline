@@ -1,6 +1,5 @@
 # Modules requied
 import logging
-import traceback
 import pandas as pd
 
 # ====== LOGGGING ======
@@ -21,7 +20,7 @@ def format_price_message(predicted_price:float, currency: str="€") -> str :
         response = f"{formatted_price}{currency} 🚙 - Mid range price. Seems like a fair deal."
     else: 
         response = f"{formatted_price}{currency} 🚓 High-end value. Likely a premium or recent car."
-    return f"{base_question}\n{response}"
+    return f"{base_question} : {response}"
 
 # ====== PREDICTION FUNCTION ======
 def make_prediction(model, model_type: str, input_dict: dict) -> tuple[float, str]:
@@ -39,6 +38,6 @@ def make_prediction(model, model_type: str, input_dict: dict) -> tuple[float, st
 
     except Exception as e:
         logger.error(f"❌ Error Detected: {str(e)}")
-        logger.debug(f"🟢 Traceback: {traceback.format_exc()}")
+        logger.exception("Stack trace")
         # Return default tuple on error
         return 0.0, "❌ Prediction failed due to an error."
